@@ -25,6 +25,9 @@ jobs:
       # Regenerate android folder with the runner's Flutter version (guaranteed compat)
       - run: flutter create --org com.example --project-name amlak_app --platforms=android .
 
+      # Re-apply app name + permissions on the fresh android/ folder
+      - run: python3 tool/patch_android.py
+
       - run: flutter pub get
 
       - run: flutter build apk --release
